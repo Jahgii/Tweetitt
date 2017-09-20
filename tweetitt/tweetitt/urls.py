@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
+from .views import home
 from . import views
+from tweet.views import home_tweet
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
-]
+    url(r'^tweet/$', home_tweet, name='home_tweet'),
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
