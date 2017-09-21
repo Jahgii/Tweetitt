@@ -20,10 +20,12 @@ from django.conf.urls.static import static
 
 from .views import home
 from . import views
-from tweet.views import home_tweet
+from tweet.views import home_tweet, tweet_detail_view, tweet_list_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
     url(r'^tweet/$', home_tweet, name='home_tweet'),
+    url(r'^tweet/detail$', tweet_detail_view, name='tweet_detail'),
+    url(r'^tweet/list$', tweet_list_view, name='tweet_list'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
